@@ -1,7 +1,6 @@
 <?php
 
 $hotels = [
-
   [
       'name' => 'Hotel Belvedere',
       'description' => 'Hotel Belvedere Descrizione',
@@ -39,18 +38,17 @@ $hotels = [
   ],
 
 ];
-
-foreach($hotels as $hotel) {
-  echo "Nome dell'Hotel: " . $hotel['name'] . "<br>";
-  echo "Descrizione: " . $hotel['description'] . "<br>";
-  echo "Parcheggio: " . ($hotel['parking'] ? 'Sì' : 'No') . "<br>";
-  echo "Voto: " . $hotel['vote'] . "<br>";
-  echo "Distanza dal centro: " . $hotel['distance_to_center'] . " km<br>";
-  echo "<hr>";
-}
+// Stampo in pagina i dati con un ciclo.
+// foreach($hotels as $hotel) {
+//   echo "Nome dell'Hotel: " . $hotel['name'] . "<br>";
+//   echo "Descrizione: " . $hotel['description'] . "<br>";
+//   echo "Parcheggio: " . ($hotel['parking'] ? 'Sì' : 'No') . "<br>";
+//   echo "Voto: " . $hotel['vote'] . "<br>";
+//   echo "Distanza dal centro: " . $hotel['distance_to_center'] . " km<br>";
+//   echo "<hr>";
+// }
 
 ?>
-
 
 
 <!DOCTYPE html>
@@ -60,10 +58,37 @@ foreach($hotels as $hotel) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hotel´s</title>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
+
 <body>
-  
+<div class="container">
+        <h1 class="my-4">Lista Hotel</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descrizione</th>
+                    <th scope="col">Parcheggio</th>
+                    <th scope="col">Voto</th>
+                    <th scope="col">Distanza dal centro</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                    foreach($hotels as $hotel) {
+                        echo "<tr>";
+                        echo "<td>" . $hotel['name'] . "</td>";
+                        echo "<td>" . $hotel['description'] . "</td>";
+                        echo "<td>" . ($hotel['parking'] ? 'Sì' : 'No') . "</td>";
+                        echo "<td>" . $hotel['vote'] . "</td>";
+                        echo "<td>" . $hotel['distance_to_center'] . " km</td>";
+                        echo "</tr>";
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
 </body>
 </html>
