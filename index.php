@@ -64,6 +64,16 @@ $hotels = [
 <body>
 <div class="container">
         <h1 class="my-4">Lista Hotel</h1>
+        <form method="POST" action="">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="parking" name="parking">
+                <label class="form-check-label" for="parking">Mostra solo hotel con parcheggio</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary my-2">Filtra</button>
+            <a href="index.php" class="btn btn-secondary my-2">Reset</a>
+
+        </form>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -76,7 +86,11 @@ $hotels = [
             </thead>
             <tbody>
                 <?php
+                    $filterParking = $_POST['parking'] ?? false;
                     foreach($hotels as $hotel) {
+                        if ($filterParking && !$hotel['parking']) {
+                            continue;
+                        }
                         echo "<tr>";
                         echo "<td>" . $hotel['name'] . "</td>";
                         echo "<td>" . $hotel['description'] . "</td>";
